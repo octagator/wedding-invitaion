@@ -5,6 +5,8 @@
  * The wording is locked: do not reword, translate, shorten or add to it.
  */
 
+import { withBase } from "@/lib/paths";
+
 export const content = {
   monogram: { first: "Y", second: "H" },
 
@@ -95,7 +97,7 @@ export const content = {
  * The site keeps working quietly if the file is missing.
  */
 export const music = {
-  src: "/audio/song.mp3",
+  src: withBase("/audio/song.mp3"),
   /** Seconds to fade the song in after the seal is tapped. */
   fadeInSeconds: 2,
   /**
@@ -114,17 +116,17 @@ export const music = {
  * Text-free versions of the nine designs belong at these paths.
  */
 export const plates = {
-  poster: "/plates/poster.webp",
-  doorsClosed: "/plates/doors-closed.webp",
-  doorsOpen: "/plates/doors-open.webp",
-  names: "/plates/plate-04.webp",
-  dateVenue: "/plates/plate-05.webp",
-  beOnTime: "/plates/plate-06.webp",
-  countdown: "/plates/plate-07.webp",
-  note: "/plates/plate-08.webp",
-  location: "/plates/plate-09.webp",
+  poster: withBase("/plates/poster.webp"),
+  doorsClosed: withBase("/plates/doors-closed.webp"),
+  doorsOpen: withBase("/plates/doors-open.webp"),
+  names: withBase("/plates/plate-04.webp"),
+  dateVenue: withBase("/plates/plate-05.webp"),
+  beOnTime: withBase("/plates/plate-06.webp"),
+  countdown: withBase("/plates/plate-07.webp"),
+  note: withBase("/plates/plate-08.webp"),
+  location: withBase("/plates/plate-09.webp"),
   /** The photo of the two children, cropped from image 4, untouched. */
-  childrenPhoto: "/plates/children.jpg",
+  childrenPhoto: withBase("/plates/children.jpg"),
 } as const;
 
 export type Content = typeof content;

@@ -4,6 +4,7 @@ import { script, serif, arabic } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  // The site URL includes any sub-path; Next resolves /og.jpg and the icons against it.
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://youssef-hana.vercel.app"),
   title: content.share.title,
   description: content.share.description,

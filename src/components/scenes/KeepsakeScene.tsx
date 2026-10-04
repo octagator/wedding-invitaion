@@ -6,6 +6,7 @@ import { content } from "@/content/invitation";
 import { LeafShadows } from "@/components/scenery/LeafShadows";
 import { Poster } from "@/components/ui/Poster";
 import { CalendarButtons } from "@/components/ui/CalendarButtons";
+import { withBase } from "@/lib/paths";
 import { type SceneHandle, type SceneProps, linesIn } from "./scene";
 
 /** Final frame: the poster as a printed card on the plaster, with three quiet controls. */
@@ -56,7 +57,7 @@ export const KeepsakeScene = forwardRef<SceneHandle, SceneProps>(function Keepsa
           <Poster />
         </div>
         <div ref={controls} className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <a className="btn-quiet" href="/poster.jpg" download="Youssef-Hana-Wedding-Invitation.jpg">
+          <a className="btn-quiet" href={withBase("/poster.jpg")} download="Youssef-Hana-Wedding-Invitation.jpg">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
               <path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" />
             </svg>
