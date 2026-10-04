@@ -8,7 +8,7 @@ import { forwardRef } from "react";
  * mask follows the pen so letters appear stroke by stroke.
  */
 export const ScriptText = forwardRef<HTMLSpanElement, {
-  children: string;
+  children: React.ReactNode;
   className?: string;
   as?: "span" | "h1" | "h2" | "p";
   style?: React.CSSProperties;

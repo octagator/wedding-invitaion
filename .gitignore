@@ -6,3 +6,5 @@ out
 .vercel
 screenshots
 *.bundle
+preview/
+tsconfig.tsbuildinfo

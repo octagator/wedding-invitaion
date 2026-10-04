@@ -66,22 +66,26 @@ function Digit({ value }: { value: string }) {
 function Box({ label, value }: { label: string; value: number }) {
   const text = String(value).padStart(2, "0");
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div
-        className="flex h-[64px] w-[64px] items-center justify-center rounded-[10px] font-serif text-[1.9rem] font-medium tabular-nums text-[#fff4dc] sm:h-[72px] sm:w-[72px] sm:text-[2.1rem]"
-        style={{
-          border: "1px solid rgba(233, 207, 147, 0.55)",
-          background: "linear-gradient(180deg, rgba(60, 50, 60, 0.35) 0%, rgba(30, 28, 40, 0.5) 100%)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.12)",
-          backdropFilter: "blur(4px)",
-        }}
-        aria-label={`${text} ${label}`}
-      >
+    <div
+      className="flex flex-col items-center justify-center"
+      style={{
+        width: "10.6cqw",
+        height: "8.2cqw",
+        borderRadius: "0.9cqw",
+        border: "0.16cqw solid rgba(95, 86, 56, 0.75)",
+        background: "rgba(255, 250, 242, 0.28)",
+        boxShadow: "inset 0 0 0 0.35cqw rgba(255, 250, 242, 0.25)",
+      }}
+      aria-label={`${text} ${label}`}
+    >
+      <div className="font-serif font-medium tabular-nums" style={{ fontSize: "4.6cqw", lineHeight: 1, color: "#5a553a" }}>
         {Array.from(text).map((d, i) => (
           <Digit key={i} value={d} />
         ))}
       </div>
-      <span className="caps text-[0.62rem] text-[#e9cf93]">{label}</span>
+      <span className="caps" style={{ fontSize: "1.2cqw", marginTop: "0.9cqw", letterSpacing: "0.16em", color: "#6b6448" }}>
+        {label}
+      </span>
     </div>
   );
 }
@@ -112,7 +116,7 @@ export function Countdown({ onDone }: { onDone?: () => void }) {
 
   const l = content.countdown.labels;
   return (
-    <div className="flex items-start justify-center gap-3 sm:gap-4" role="timer" aria-live="off">
+    <div className="flex items-start justify-center" style={{ gap: "1.5cqw" }} role="timer" aria-live="off">
       <Box label={l.days} value={parts.days} />
       <Box label={l.hours} value={parts.hours} />
       <Box label={l.minutes} value={parts.minutes} />

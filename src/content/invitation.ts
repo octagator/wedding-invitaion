@@ -126,7 +126,11 @@ export const plates = {
   note: withBase("/plates/plate-08.webp"),
   location: withBase("/plates/plate-09.webp"),
   /** The photo of the two children, cropped from image 4, untouched. */
-  childrenPhoto: withBase("/plates/children.jpg"),
+  childrenPhoto: withBase("/plates/children.png"),
+  /** The little girl and boy from image 8, as a soft-edged sprite. */
+  kids: withBase("/plates/kids.png"),
+  /** The crowned crest, cropped from the poster. */
+  crest: withBase("/plates/crest.webp"),
 } as const;
 
 export type Content = typeof content;
