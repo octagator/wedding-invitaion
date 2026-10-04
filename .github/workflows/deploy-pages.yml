@@ -1,5 +1,6 @@
-# Builds the static site and publishes it to GitHub Pages on every push to main.
-# The live address is https://octagator.github.io/wedding-invitaion/
+# Builds the static site on every push to main and publishes it to the
+# gh-pages branch, which GitHub Pages serves at
+# https://octagator.github.io/wedding-invitaion/
 name: Deploy to GitHub Pages
 
 on:
@@ -8,16 +9,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,29 +24,18 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Enable GitHub Pages for this repository
-        id: pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - run: npm ci
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
       - run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_BASE_PATH: /wedding-invitaion
+          NEXT_PUBLIC_SITE_URL: https://octagator.github.io/wedding-invitaion
           NEXT_TELEMETRY_DISABLED: "1"
-      - uses: actions/upload-pages-artifact@v3
+      - name: Publish ./out to the gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          force_orphan: true
+          commit_message: "Publish ${{ github.sha }}"
