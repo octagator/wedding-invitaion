@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { content } from "@/content/invitation";
 import { script, serif, arabic } from "@/lib/fonts";
+import { withBase } from "@/lib/paths";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: content.share.title,
   description: content.share.description,
   robots: { index: false, follow: false, nocache: true },
-  icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
+  icons: { icon: withBase("/icon.svg"), apple: withBase("/apple-icon.png") },
   openGraph: {
     title: content.share.title,
     description: content.share.description,
