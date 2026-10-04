@@ -5,8 +5,12 @@ import { withBase } from "@/lib/paths";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  // The site URL includes any sub-path; Next resolves /og.jpg and the icons against it.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://youssef-hana.vercel.app"),
+  // The site URL includes any sub-path; Next resolves /og.jpg against it.
+  // On Vercel the production address is known at build time, so nothing needs setting.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://youssef-hana.vercel.app"),
+  ),
   title: content.share.title,
   description: content.share.description,
   robots: { index: false, follow: false, nocache: true },

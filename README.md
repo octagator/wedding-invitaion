@@ -20,23 +20,29 @@ https://<your-domain>/?to=Uncle%20Ahmed%20%26%20family
 https://<your-domain>/?to=%D8%B9%D9%85%D9%88%20%D8%A3%D8%AD%D9%85%D8%AF%20%D9%88%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9
 ```
 
-## Live site
+## Deploy to Vercel
 
-Every push to `main` builds the site and publishes it to GitHub Pages:
+One click: https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2Foctagator%2Fwedding-invitaion
+
+Leave every setting as Vercel proposes (framework: Next.js) and press Deploy. The site
+reads its own production address from Vercel at build time, so the WhatsApp preview
+image resolves without any environment variable. Every push to `main` redeploys.
+
+Personalised links, once deployed (replace the host with yours):
 
 ```
-https://octagator.github.io/wedding-invitaion/
-https://octagator.github.io/wedding-invitaion/?to=Uncle%20Ahmed%20%26%20family
+https://youssef-hana.vercel.app/?to=Uncle%20Ahmed%20%26%20family
+https://youssef-hana.vercel.app/?to=%D8%B9%D9%85%D9%88%20%D8%A3%D8%AD%D9%85%D8%AF%20%D9%88%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9
 ```
 
-The workflow is `.github/workflows/deploy-pages.yml`.
+If you want a custom domain later, add it in the Vercel project and set
+`NEXT_PUBLIC_SITE_URL` to it so the preview image uses that address.
 
-## Deploy to Vercel (optional, for a cleaner address)
+## GitHub Pages (alternative)
 
-1. Import this repository at vercel.com (framework preset: Next.js, nothing else to set).
-2. Add an environment variable `NEXT_PUBLIC_SITE_URL` with the final address,
-   e.g. `https://youssef-hana.vercel.app`, so the WhatsApp preview image resolves.
-3. Deploy. Every push to `main` redeploys.
+Every push to `main` also publishes the build to the `gh-pages` branch. To serve it,
+open Settings → Pages, choose "Deploy from a branch", `gh-pages`, `/ (root)`, and the
+site appears at `https://octagator.github.io/wedding-invitaion/`.
 
 ## Where things live
 
