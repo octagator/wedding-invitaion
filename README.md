@@ -50,30 +50,26 @@ site appears at `https://octagator.github.io/wedding-invitaion/`.
 | --- | --- |
 | Every word, the maps link, the countdown instant, the music cue | `src/content/invitation.ts` |
 | The song (drop in) | `public/audio/song.mp3` |
-| Text-free image plates (drop in, optional) | `public/plates/` |
-| The children's photo, untouched (drop in) | `public/plates/children.jpg` |
+| The nine design images | `design/` |
+| Plates made from them (text removed, photo and card cropped) | `public/plates/` |
 | Saved poster, link preview, Apple icon | `public/poster.jpg`, `public/og.jpg`, `public/apple-icon.png` |
 | Envelope, doors, scroll journey | `src/components/` |
 
 ### Plates
 
-Each scene paints its own backdrop in CSS and SVG. When a file exists at one of
-these paths it is shown on top automatically; nothing else changes:
+The nine design images live in `design/`. `scripts/make-plates.py` turns them into the
+plates under `public/plates/`: it removes only the baked-in lettering (and the painted
+watch) with OpenCV inpainting so every word is live text, crops the children's photo from
+image 4 exactly as it is, crops the gatefold card from image 2 for the envelope and the
+door leaves, and cuts the little girl and boy from image 8 as a soft-edged sprite.
 
-```
-public/plates/poster.webp         image 1  (keepsake)
-public/plates/doors-closed.webp   image 2
-public/plates/doors-open.webp     image 3
-public/plates/plate-04.webp       image 4  names scene (text-free)
-public/plates/plate-05.webp       image 5  date and venue (text-free)
-public/plates/plate-06.webp       image 6  be on time (text-free)
-public/plates/plate-07.webp       image 7  countdown (text-free)
-public/plates/plate-08.webp       image 8  note from the bride (text-free)
-public/plates/plate-09.webp       image 9  location (text-free)
-public/plates/children.jpg        the photo of the two children, cropped as is
+```bash
+pip install opencv-python-headless numpy
+python3 scripts/make-plates.py
 ```
 
-WebP or AVIF at about 1200 px on the long side is plenty for phones.
+If you have cleaner text-free plates, drop them over the files in `public/plates/`
+with the same names; nothing else changes.
 
 ### Music
 

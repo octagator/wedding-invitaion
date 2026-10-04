@@ -95,7 +95,7 @@ for (const size of sizes) {
   }
 
   // The map button points at the shared pin
-  const href = await page.locator("a.btn-gold").first().getAttribute("href");
+  const href = await page.locator("a.btn-olive").first().getAttribute("href");
   if (!href || !href.startsWith("https://maps.app.goo.gl/")) problems.push(`${size.name}: map link is ${href}`);
 
   if (errors.length) problems.push(`${size.name}: ${errors.join(" | ")}`);

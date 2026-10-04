@@ -247,8 +247,8 @@ export function Scratch({
           {calm ? (
             <button
               type="button"
-              className="absolute inset-0 flex items-center justify-center rounded-[10px] text-[0.72rem] uppercase tracking-[0.28em] text-[#5a4620]"
-              style={{ background: "linear-gradient(120deg, #d9b86f, #f0dca6 40%, #c9a35e 60%, #efd9a0)" }}
+              className="absolute inset-0 flex items-center justify-center rounded-[10px] uppercase tracking-[0.28em] text-[#5a4620]"
+              style={{ fontSize: "clamp(0.6rem, 2.4cqw, 0.9rem)", background: "linear-gradient(120deg, #d9b86f, #f0dca6 40%, #c9a35e 60%, #efd9a0)" }}
               onClick={finish}
             >
               {content.ui.scratch}
