@@ -20,7 +20,18 @@ https://<your-domain>/?to=Uncle%20Ahmed%20%26%20family
 https://<your-domain>/?to=%D8%B9%D9%85%D9%88%20%D8%A3%D8%AD%D9%85%D8%AF%20%D9%88%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9
 ```
 
-## Deploy to Vercel
+## Live site
+
+Every push to `main` builds the site and publishes it to GitHub Pages:
+
+```
+https://octagator.github.io/wedding-invitaion/
+https://octagator.github.io/wedding-invitaion/?to=Uncle%20Ahmed%20%26%20family
+```
+
+The workflow is `.github/workflows/deploy-pages.yml`.
+
+## Deploy to Vercel (optional, for a cleaner address)
 
 1. Import this repository at vercel.com (framework preset: Next.js, nothing else to set).
 2. Add an environment variable `NEXT_PUBLIC_SITE_URL` with the final address,
